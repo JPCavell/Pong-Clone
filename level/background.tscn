@@ -1,0 +1,142 @@
+[gd_scene load_steps=11 format=3 uid="uid://c40hinbx5n3oa"]
+
+[ext_resource type="Texture2D" uid="uid://b3ortpbgmevv2" path="res://assets/Background Empty.png" id="1_cdty7"]
+[ext_resource type="Script" path="res://level/background.gd" id="1_tk55j"]
+[ext_resource type="PackedScene" uid="uid://dtqq5gctquf1q" path="res://objects/Paddle_1.tscn" id="2_nlr3f"]
+[ext_resource type="PackedScene" uid="uid://djgu6omje8sb4" path="res://objects/Paddle_2.tscn" id="3_c4e55"]
+[ext_resource type="PackedScene" uid="uid://djvxv1dyayq4s" path="res://objects/ball.tscn" id="4_lx4r3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yd352"]
+size = Vector2(993, 23)
+
+[sub_resource type="FontFile" id="FontFile_wo8ib"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/5/0/ascent = 0.0
+cache/0/5/0/descent = 0.0
+cache/0/5/0/underline_position = 0.0
+cache/0/5/0/underline_thickness = 0.0
+cache/0/5/0/scale = 1.0
+cache/0/500/0/ascent = 0.0
+cache/0/500/0/descent = 0.0
+cache/0/500/0/underline_position = 0.0
+cache/0/500/0/underline_thickness = 0.0
+cache/0/500/0/scale = 1.0
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/250/0/ascent = 0.0
+cache/0/250/0/descent = 0.0
+cache/0/250/0/underline_position = 0.0
+cache/0/250/0/underline_thickness = 0.0
+cache/0/250/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ndiq2"]
+font = SubResource("FontFile_wo8ib")
+font_size = 250
+outline_size = 20
+outline_color = Color(0.312361, 0.50322, 0.966362, 1)
+
+[sub_resource type="FontFile" id="FontFile_bwio4"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/500/0/ascent = 0.0
+cache/0/500/0/descent = 0.0
+cache/0/500/0/underline_position = 0.0
+cache/0/500/0/underline_thickness = 0.0
+cache/0/500/0/scale = 1.0
+cache/0/250/0/ascent = 0.0
+cache/0/250/0/descent = 0.0
+cache/0/250/0/underline_position = 0.0
+cache/0/250/0/underline_thickness = 0.0
+cache/0/250/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_jf5pl"]
+font = SubResource("FontFile_bwio4")
+font_size = 250
+outline_size = 20
+outline_color = Color(0.683029, 0.186168, 0.603965, 1)
+
+[node name="Background" type="Camera2D"]
+position = Vector2(48, 0)
+script = ExtResource("1_tk55j")
+
+[node name="BackgroundEmpty" type="Sprite2D" parent="."]
+scale = Vector2(2.00625, 2.01111)
+texture = ExtResource("1_cdty7")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_nlr3f")]
+position = Vector2(-1000, 0)
+scale = Vector2(2.5, 2.5)
+
+[node name="BallBody2D" parent="." instance=ExtResource("4_lx4r3")]
+scale = Vector2(2.5, 2.5)
+
+[node name="top and bottom" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="top and bottom"]
+position = Vector2(0, -555)
+scale = Vector2(2.21, 1)
+shape = SubResource("RectangleShape2D_yd352")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top and bottom"]
+position = Vector2(0, 555)
+scale = Vector2(2.21, 1)
+shape = SubResource("RectangleShape2D_yd352")
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("3_c4e55")]
+position = Vector2(1000, 0)
+scale = Vector2(2.5, 2.5)
+
+[node name="Left" type="Area2D" parent="."]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Left"]
+position = Vector2(-1005, 0)
+rotation = -1.57079
+scale = Vector2(1.11, 1)
+shape = SubResource("RectangleShape2D_yd352")
+
+[node name="Right" type="Area2D" parent="."]
+position = Vector2(1005, 0)
+rotation = -1.57079
+scale = Vector2(1.11, 1)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Right"]
+shape = SubResource("RectangleShape2D_yd352")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -182.0
+offset_top = -584.0
+offset_right = -142.0
+offset_bottom = -544.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -129.0
+offset_right = 141.0
+offset_bottom = 333.0
+text = "0"
+label_settings = SubResource("LabelSettings_ndiq2")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="Control"]
+custom_minimum_size = Vector2(0, -0.025)
+layout_mode = 0
+offset_left = 300.0
+offset_right = 435.0
+offset_bottom = 333.0
+text = "0"
+label_settings = SubResource("LabelSettings_jf5pl")
+horizontal_alignment = 1
+autowrap_mode = 2
