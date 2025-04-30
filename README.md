@@ -2,4 +2,4 @@
 
 # This project is a work in progress and was created primarily for learning purposes. Some aspects of the game may be incomplete, and the code currently contains no comments.
 
-# This project is an original implementation inspired by Pong. It is intended for educational and non-commercial use only.
+# Disclaimer: This project is an original implementation inspired by Pong. It is intended for educational and non-commercial use only.
